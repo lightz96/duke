@@ -39,6 +39,9 @@ public class DeadlineCommand extends AddCommand {
      */
     @Override
     public String execute(TaskList taskList, Storage storage) {
+        assert taskList != null : "tasklist cannot be null";
+        assert storage != null : "storage cannot be null";
+
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATETIME_PATTERN);
             String[] args = GetArgumentsUtil.getTwoCommandArgs(1, "/by", commands);

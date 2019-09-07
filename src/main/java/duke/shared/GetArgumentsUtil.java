@@ -16,6 +16,10 @@ public class GetArgumentsUtil {
      * @throws DukeException if user does not provide the sub-command / the sub-command does not have any description
      */
     public static String[] getTwoCommandArgs(int start, String delimiter, String[] commands) throws DukeException {
+        assert commands != null : "commands should not be null";
+        assert delimiter != "" : "delimiter should not be empty";
+        assert start >= 0 : "start should be positive";
+
         String[] args = new String[2];
         List<String> commandList = Arrays.asList(commands);
         int indexOfSeparator = commandList.indexOf(delimiter);
@@ -29,6 +33,9 @@ public class GetArgumentsUtil {
             args[1] = concatStrings(commandList.subList(indexOfSeparator + 1, commandList.size())
                     .toArray(new String[commandList.size() - (indexOfSeparator + 1)]));
         }
+
+        assert args.length == 2 : "args should have 2 items";
+
         return args;
     }
 
@@ -38,6 +45,8 @@ public class GetArgumentsUtil {
      * @return argument of the command in String
      */
     public static String concatStrings(String[] command) {
+        assert command != null : "command cannot be null";
+
         StringBuilder myStringBuilder = new StringBuilder();
         for (int i = 0; i < command.length; i++) {
             myStringBuilder.append(command[i]).append(" ");

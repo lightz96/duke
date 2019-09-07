@@ -1,7 +1,6 @@
 package duke.task;
 
 import duke.shared.Messages;
-import duke.task.Task;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +24,7 @@ public class TaskList {
      * @return formatted list of tasks
      */
     public String getTasksInString(List<Task> listToDisplay) {
+        assert listToDisplay != null;
         StringBuilder myStringBuilder = new StringBuilder();
         for (int i = 0; i < listToDisplay.size(); i++) {
             if (i < listToDisplay.size() - 1) {
@@ -42,6 +42,7 @@ public class TaskList {
      * @param task task to be added to tasklist
      */
     public void addToTaskList(Task task) {
+        assert task != null;
         taskList.add(task);
     }
 
@@ -60,6 +61,7 @@ public class TaskList {
      * @throws IndexOutOfBoundsException index less than 0 or bigger than the size of taskList
      */
     public Task deleteFromTaskList(int index) throws IndexOutOfBoundsException {
+        assert index > 0;
         return taskList.remove(index);
     }
 
@@ -70,6 +72,7 @@ public class TaskList {
      * @throws IndexOutOfBoundsException index less than 0 or bigger than the size of the tasklist
      */
     public Task getTask(int index) throws IndexOutOfBoundsException {
+        assert index > 0;
         return taskList.get(index);
     }
 
@@ -87,6 +90,7 @@ public class TaskList {
      * @return list of tasks that matches the keywords
      */
     public List<Task> findTasks(String[] itemToFind) {
+        assert itemToFind != null;
         List<Task> matchedTaskList = new ArrayList<>();
         List<String> itemListInString = Arrays.asList(itemToFind);
         for (Task task : taskList) {

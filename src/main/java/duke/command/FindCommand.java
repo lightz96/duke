@@ -17,6 +17,9 @@ public class FindCommand extends Command {
 
     @Override
     public String execute(TaskList taskList, Storage storage) {
+        assert taskList != null : "tasklist cannot be null";
+        assert storage != null : "storage cannot be null";
+
         List<Task> taskMatchedList = taskList.findTasks(itemsToFind);
         String formattedTasks = taskList.getTasksInString(taskMatchedList);
         return String.join("\n", Messages.FIND_TASK_MESSAGE, Messages.COMMAND_INDENTATION

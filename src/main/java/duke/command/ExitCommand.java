@@ -25,6 +25,9 @@ public class ExitCommand extends Command {
      */
     @Override
     public String execute(TaskList taskList, Storage storage) {
+        assert taskList != null : "tasklist cannot be null";
+        assert storage != null : "storage cannot be null";
+
         try {
             storage.saveData(taskList.getTaskList());
             return Messages.BYE_MESSAGE;

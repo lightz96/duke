@@ -22,6 +22,9 @@ public class ListCommand extends Command {
      */
     @Override
     public String execute(TaskList taskList, Storage storage) {
+        assert taskList != null : "tasklist cannot be null";
+        assert storage != null : "storage cannot be null";
+
         String formattedString = taskList.getTasksInString(taskList.getTaskList());
         String message = String.join("\n", Messages.LIST_MESSAGE,
                 Messages.COMMAND_INDENTATION + formattedString);

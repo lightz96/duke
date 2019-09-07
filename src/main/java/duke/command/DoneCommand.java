@@ -29,6 +29,9 @@ public class DoneCommand extends Command {
      */
     @Override
     public String execute(TaskList taskList, Storage storage) {
+        assert taskList != null : "tasklist cannot be null";
+        assert storage != null : "storage cannot be null";
+
         try {
             taskList.getTask(itemNum - 1).completeTask();
             return String.join("\n", Messages.DONE_MESSAGE, Messages.COMMAND_INDENTATION

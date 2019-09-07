@@ -93,6 +93,7 @@ public class Storage {
      * @return converted todo object
      */
     public Task toDoParser(String[] inputLines) {
+        assert inputLines.length > 4 : "inputLines should contain more than 4 items";
         Task toDoTask = null;
         String taskName = String.join(" ", Arrays.copyOfRange(inputLines, START_ARGUMENTS_INDEX,
                 inputLines.length));
@@ -101,6 +102,7 @@ public class Storage {
         } else if (inputLines[DONE_INDEX].equals("0")) {
             toDoTask = new Todo(taskName, false);
         }
+        assert toDoTask != null;
         return toDoTask;
     }
 
@@ -111,6 +113,7 @@ public class Storage {
      * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}
      */
     public Task eventParser(String[] inputLines) throws DukeException {
+        assert inputLines.length > 4 : "inputLines should contain more than 4 items";
         Task eventTask = null;
         String[] args = GetArgumentsUtil.getTwoCommandArgs(0,"|",
                 Arrays.copyOfRange(inputLines, START_ARGUMENTS_INDEX, inputLines.length));
@@ -119,6 +122,7 @@ public class Storage {
         } else if (inputLines[DONE_INDEX].equals("0")) {
             eventTask = new Event(args[0], args[1], false);
         }
+        assert eventTask != null;
         return eventTask;
     }
 
@@ -129,6 +133,7 @@ public class Storage {
      * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}
      */
     public Task deadlineParser(String[] inputLines) throws DukeException {
+        assert inputLines.length > 4 : "inputLines should contain more than 4 items";
         Task deadlineTask = null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATETIME_PATTERN);
         String[] args = GetArgumentsUtil.getTwoCommandArgs(0, "|",
@@ -139,6 +144,7 @@ public class Storage {
         } else if (inputLines[DONE_INDEX].equals("0")) {
             deadlineTask = new Deadline(args[0], dateTime, false);
         }
+        assert deadlineTask != null;
         return deadlineTask;
     }
 
@@ -148,6 +154,7 @@ public class Storage {
      * @throws IOException throws by {@link #writeToFile(String)}
      */
     public void saveData(List<Task> taskList) throws IOException {
+        assert taskList != null;
         StringBuilder myStringBuilder = new StringBuilder();
         for (Task task : taskList) {
             if (task instanceof Todo) {

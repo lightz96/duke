@@ -24,6 +24,9 @@ public class ToDoCommand extends AddCommand {
      */
     @Override
     public String execute(TaskList taskList, Storage storage) {
+        assert taskList != null : "tasklist cannot be null";
+        assert storage != null : "storage cannot be null";
+
         String arg = GetArgumentsUtil.concatStrings(Arrays.copyOfRange(commands, 1, commands.length));
         Task toDoTask = new Todo(arg);
         taskList.addToTaskList(toDoTask);

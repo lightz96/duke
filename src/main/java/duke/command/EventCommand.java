@@ -32,6 +32,9 @@ public class EventCommand extends AddCommand {
      */
     @Override
     public String execute(TaskList taskList, Storage storage) {
+        assert taskList != null : "tasklist cannot be null";
+        assert storage != null : "storage cannot be null";
+
         try {
             String[] args = GetArgumentsUtil.getTwoCommandArgs(1, "/at", commands);
             Task eventTask = new Event(args[0], args[1]);
