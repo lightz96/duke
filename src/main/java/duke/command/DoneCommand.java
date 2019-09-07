@@ -12,21 +12,11 @@ public class DoneCommand extends Command {
         this.itemNum = itemNum;
     }
 
-    /**
-     * Notify the program to exit.
-     * @return false
-     */
     @Override
     public boolean isExit() {
         return false;
     }
 
-    /**
-     * Executes Done command.
-     * @param taskList TaskList object for the duke program
-     * @param storage storage object for the duke program
-     * @return String to be printed
-     */
     @Override
     public String execute(TaskList taskList, Storage storage) {
         assert taskList != null : "tasklist cannot be null";

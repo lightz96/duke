@@ -19,6 +19,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Displays the Duke GUI. Executes the command when user enters it in the Duke GUI.
+ */
 public class DukeWindow extends AnchorPane {
     private Stage stage;
     private Storage storage;
@@ -47,10 +50,11 @@ public class DukeWindow extends AnchorPane {
     }
 
     /**
-     * Constructor to create DukeWindow Ui.
-     * @param stage primary stage
-     * @param storage storage object for this Ui
-     * @param tasks a list of tasks for this Ui
+     * Creates DukeWindow Ui constructor.
+     *
+     * @param stage primary stage.
+     * @param storage storage object for this Ui.
+     * @param tasks a list of tasks for this Ui.
      */
     public DukeWindow(Stage stage, Storage storage, TaskList tasks) {
         this.stage = stage;
@@ -64,7 +68,7 @@ public class DukeWindow extends AnchorPane {
     }
 
     /**
-     * Loads the DukeWindows.fxml
+     * Loads the DukeWindows.fxml.
      */
     public void show()  {
         try {
@@ -104,14 +108,15 @@ public class DukeWindow extends AnchorPane {
 
     /**
      * Prints the message in the Ui.
-     * @param message message to be printed
+     *
+     * @param message message to be printed.
      */
     public void outputToUi(String message) {
         dialogContainer.getChildren().add(DialogBox.getDukeDialog(message, duke));
     }
 
     /**
-     * Print welcome message to user.
+     * Prints welcome message to user.
      */
     public void showWelcome() {
         outputToUi(Messages.GREETING_MESSAGE);

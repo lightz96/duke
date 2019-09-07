@@ -5,15 +5,19 @@ import duke.exception.DukeException;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Retrieves command arguments utility.
+ */
 public class GetArgumentsUtil {
 
     /**
      * Retrieves two args from an arrays.
-     * @param start is the start index where the method will sublist from
-     * @param delimiter is the string that determine the 2 arguments
-     * @param commands is the latest command inputted by the user
-     * @return an array of 2 items, command description and sub-command(e.g. /at) description
-     * @throws DukeException if user does not provide the sub-command / the sub-command does not have any description
+     *
+     * @param start is the start index where the method will sublist from.
+     * @param delimiter is the string that determine the 2 arguments.
+     * @param commands is the latest command inputted by the user.
+     * @return an array of 2 items, command description and sub-command(e.g. /at) description.
+     * @throws DukeException if user does not provide the sub-command / the sub-command does not have any description.
      */
     public static String[] getTwoCommandArgs(int start, String delimiter, String[] commands) throws DukeException {
         assert commands != null : "commands should not be null";
@@ -35,14 +39,14 @@ public class GetArgumentsUtil {
         }
 
         assert args.length == 2 : "args should have 2 items";
-
         return args;
     }
 
     /**
-     * Concatenate the arguments (in array).
-     * @param command is last command inputted by the user (in array)
-     * @return argument of the command in String
+     * Concatenates the arguments (in array).
+     *
+     * @param command is last command inputted by the user (in array).
+     * @return argument of the command in String.
      */
     public static String concatStrings(String[] command) {
         assert command != null : "command cannot be null";

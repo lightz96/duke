@@ -11,23 +11,19 @@ import java.util.Arrays;
 
 public class ToDoCommand extends AddCommand {
     private String[] commands;
+    private static final int TODO_ARGUMENT_START_INDEX = 1;
 
     public ToDoCommand(String[] commands) {
         this.commands = commands;
     }
 
-    /**
-     * Executes ToDo command.
-     * @param taskList TaskList object for the duke program
-     * @param storage storage object for the duke program
-     * @return String to be printed
-     */
     @Override
     public String execute(TaskList taskList, Storage storage) {
         assert taskList != null : "tasklist cannot be null";
         assert storage != null : "storage cannot be null";
 
-        String arg = GetArgumentsUtil.concatStrings(Arrays.copyOfRange(commands, 1, commands.length));
+        String arg = GetArgumentsUtil.concatStrings(Arrays.copyOfRange(commands, TODO_ARGUMENT_START_INDEX,
+                commands.length));
         Task toDoTask = new Todo(arg);
         taskList.addToTaskList(toDoTask);
         return String.join("\n", Messages.ADDED_TASK_MESSAGE,

@@ -10,33 +10,25 @@ import duke.task.TaskList;
 
 public class EventCommand extends AddCommand {
     private String[] commands;
+    private static final int EVENT_ARGUMENTS_START_INDEX = 1;
+    private static final String EVENT_DELIMITER = "/at";
 
     public EventCommand(String[] commands) {
         this.commands = commands;
     }
 
-    /**
-     * Notify the program to exit.
-     * @return false
-     */
     @Override
     public boolean isExit() {
         return false;
     }
 
-    /**
-     * Executes Event command.
-     * @param taskList TaskList object for the duke program
-     * @param storage storage object for the duke program
-     * @return String to be printed
-     */
     @Override
     public String execute(TaskList taskList, Storage storage) {
         assert taskList != null : "tasklist cannot be null";
         assert storage != null : "storage cannot be null";
 
         try {
-            String[] args = GetArgumentsUtil.getTwoCommandArgs(1, "/at", commands);
+            String[] args = GetArgumentsUtil.getTwoCommandArgs(EVENT_ARGUMENTS_START_INDEX, EVENT_DELIMITER, commands);
             Task eventTask = new Event(args[0], args[1]);
             taskList.addToTaskList(eventTask);
             return String.join("\n", Messages.ADDED_TASK_MESSAGE, Messages.COMMAND_INDENTATION

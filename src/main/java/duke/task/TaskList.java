@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Contains a list of Tasks object. Performs operation like adds, deletes to taskList.
+ */
 public class TaskList {
     private List<Task> taskList;
 
@@ -20,8 +23,9 @@ public class TaskList {
 
     /**
      * Formats the list of tasks.
-     * @param listToDisplay list of tasks to be formatted
-     * @return formatted list of tasks
+     *
+     * @param listToDisplay list of tasks to be formatted.
+     * @return formatted list of tasks.
      */
     public String getTasksInString(List<Task> listToDisplay) {
         assert listToDisplay != null;
@@ -39,7 +43,8 @@ public class TaskList {
 
     /**
      * Adds task to tasklist.
-     * @param task task to be added to tasklist
+     *
+     * @param task task to be added to tasklist.
      */
     public void addToTaskList(Task task) {
         assert task != null;
@@ -48,7 +53,8 @@ public class TaskList {
 
     /**
      * Provides the number of items in taskList.
-     * @return number of items inside taskList
+     *
+     * @return number of items inside taskList.
      */
     public int getSize() {
         return taskList.size();
@@ -56,9 +62,10 @@ public class TaskList {
 
     /**
      * Removes task from taskList.
-     * @param index index of the taskList
-     * @return removed task
-     * @throws IndexOutOfBoundsException index less than 0 or bigger than the size of taskList
+     *
+     * @param index index of the taskList.
+     * @return removed task.
+     * @throws IndexOutOfBoundsException index less than 0 or bigger than the size of taskList.
      */
     public Task deleteFromTaskList(int index) throws IndexOutOfBoundsException {
         assert index > 0;
@@ -67,9 +74,10 @@ public class TaskList {
 
     /**
      * Retrieves task from tasklist.
-     * @param index index of the taskList
-     * @return requested task
-     * @throws IndexOutOfBoundsException index less than 0 or bigger than the size of the tasklist
+     *
+     * @param index index of the taskList.
+     * @return requested task.
+     * @throws IndexOutOfBoundsException index less than 0 or bigger than the size of the tasklist.
      */
     public Task getTask(int index) throws IndexOutOfBoundsException {
         assert index > 0;
@@ -78,7 +86,8 @@ public class TaskList {
 
     /**
      * Provides all tasks within the tasklist.
-     * @return a list of tasks within the tasklist
+     *
+     * @return a list of tasks within the tasklist.
      */
     public List<Task> getTaskList() {
         return taskList;
@@ -86,8 +95,9 @@ public class TaskList {
 
     /**
      * Finds tasks that contains the keywords stated in the itemToFind.
-     * @param itemToFind keywords provided by the user
-     * @return list of tasks that matches the keywords
+     *
+     * @param itemToFind keywords provided by the user.
+     * @return list of tasks that matches the keywords.
      */
     public List<Task> findTasks(String[] itemToFind) {
         assert itemToFind != null;

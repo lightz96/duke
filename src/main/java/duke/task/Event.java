@@ -5,9 +5,10 @@ public class Event extends Task {
     protected String timing;
 
     /**
-     * Constructor that will be used for entered command.
-     * @param name name of the event task
-     * @param timing datetime/location of the event task
+     * Provides constructor that will be used for entered command.
+     *
+     * @param name name of the event task.
+     * @param timing datetime/location of the event task.
      */
     public Event(String name, String timing) {
         //Used when user entered command
@@ -16,10 +17,11 @@ public class Event extends Task {
     }
 
     /**
-     * Constructor that will be used for loading data from text.
-     * @param name name of the event task
-     * @param timing datetime/location of the event task
-     * @param isDone is the status of the task
+     * Provides constructor that will be used for loading data from text.
+     *
+     * @param name name of the event task.
+     * @param timing datetime/location of the event task.
+     * @param isDone is the status of the task.
      */
     public Event(String name, String timing, boolean isDone) {
         //Used when program loads data from text

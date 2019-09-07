@@ -5,8 +5,9 @@ public abstract class Task {
     protected boolean isDone;
 
     /**
-     * Constructor that will be used for entered command.
-     * @param name name of the task
+     * Provides constructor that will be used for entered command.
+     *
+     * @param name name of the task.
      */
     public Task(String name) {
         //Used when user entered command
@@ -15,9 +16,10 @@ public abstract class Task {
     }
 
     /**
-     * Constructor that will be used for loading data from text.
-     * @param name name of the task
-     * @param isDone is the status of the task
+     * Provides constructor that will be used for loading data from text.
+     *
+     * @param name name of the task.
+     * @param isDone is the status of the task.
      */
     public Task(String name, boolean isDone) {
         //Used when program loads data from text

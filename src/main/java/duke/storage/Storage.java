@@ -33,8 +33,9 @@ public class Storage {
     public static final int START_ARGUMENTS_INDEX = 4;
 
     /**
-     * Constructor for storage.
-     * @param filePath file path to load our data from
+     * Provides constructor for storage.
+     *
+     * @param filePath file path to load our data from.
      */
     public Storage(String filePath) {
         this.filePath = filePath;
@@ -42,9 +43,10 @@ public class Storage {
 
     /**
      * Reads and load data from file.
-     * @return list of past tasks saved in the text file
-     * @throws IOException throws by {@link #readFile()}
-     * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}
+     *
+     * @return list of past tasks saved in the text file.
+     * @throws IOException throws by {@link #readFile()}.
+     * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}.
      */
     public List<Task> load() throws IOException, DukeException {
         taskList = new ArrayList<>();
@@ -54,8 +56,9 @@ public class Storage {
 
     /**
      * Reads and decode the text in the text file line-by-line.
-     * @throws IOException if file cannot be found / file cannot be opened
-     * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}
+     *
+     * @throws IOException if file cannot be found / file cannot be opened.
+     * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}.
      */
     public void readFile() throws IOException, DukeException {
         String line;
@@ -70,9 +73,10 @@ public class Storage {
     }
 
     /**
-     * Decode the line and adds to the tasklist.
-     * @param line line read from the text file
-     * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}
+     * Decodes the line and adds to the tasklist.
+     *
+     * @param line line read from the text file.
+     * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}.
      */
     public void decodeLine(String line) throws DukeException {
         String[] inputLines = line.split("\\s+");
@@ -88,12 +92,14 @@ public class Storage {
     }
 
     /**
-     * Convert the decoded line to ToDo object.
-     * @param inputLines line from the text file
-     * @return converted todo object
+     * Converts the decoded line to ToDo object.
+     *
+     * @param inputLines line from the text file.
+     * @return converted todo object.
      */
     public Task toDoParser(String[] inputLines) {
         assert inputLines.length > 4 : "inputLines should contain more than 4 items";
+
         Task toDoTask = null;
         String taskName = String.join(" ", Arrays.copyOfRange(inputLines, START_ARGUMENTS_INDEX,
                 inputLines.length));
@@ -102,18 +108,21 @@ public class Storage {
         } else if (inputLines[DONE_INDEX].equals("0")) {
             toDoTask = new Todo(taskName, false);
         }
+
         assert toDoTask != null;
         return toDoTask;
     }
 
     /**
-     * Convert the decoded line to Event object.
-     * @param inputLines line from the text file
-     * @return converted event object
-     * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}
+     * Converts the decoded line to Event object.
+     *
+     * @param inputLines line from the text file.
+     * @return converted event object.
+     * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}.
      */
     public Task eventParser(String[] inputLines) throws DukeException {
         assert inputLines.length > 4 : "inputLines should contain more than 4 items";
+
         Task eventTask = null;
         String[] args = GetArgumentsUtil.getTwoCommandArgs(0,"|",
                 Arrays.copyOfRange(inputLines, START_ARGUMENTS_INDEX, inputLines.length));
@@ -122,18 +131,21 @@ public class Storage {
         } else if (inputLines[DONE_INDEX].equals("0")) {
             eventTask = new Event(args[0], args[1], false);
         }
+
         assert eventTask != null;
         return eventTask;
     }
 
     /**
-     * Convert the decoded line to Deadline Object.
-     * @param inputLines line from the text file
-     * @return converted deadline object
-     * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}
+     * Converts the decoded line to Deadline Object.
+     *
+     * @param inputLines line from the text file.
+     * @return converted deadline object.
+     * @throws DukeException throws by {@link GetArgumentsUtil#getTwoCommandArgs(int, String, String[])}.
      */
     public Task deadlineParser(String[] inputLines) throws DukeException {
         assert inputLines.length > 4 : "inputLines should contain more than 4 items";
+
         Task deadlineTask = null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATETIME_PATTERN);
         String[] args = GetArgumentsUtil.getTwoCommandArgs(0, "|",
@@ -144,17 +156,20 @@ public class Storage {
         } else if (inputLines[DONE_INDEX].equals("0")) {
             deadlineTask = new Deadline(args[0], dateTime, false);
         }
+
         assert deadlineTask != null;
         return deadlineTask;
     }
 
     /**
-     * Encode the task and save it to the text file.
-     * @param taskList latest list of tasks
-     * @throws IOException throws by {@link #writeToFile(String)}
+     * Encodes the task and save it to the text file.
+     *
+     * @param taskList latest list of tasks.
+     * @throws IOException throws by {@link #writeToFile(String)}.
      */
     public void saveData(List<Task> taskList) throws IOException {
         assert taskList != null;
+
         StringBuilder myStringBuilder = new StringBuilder();
         for (Task task : taskList) {
             if (task instanceof Todo) {
@@ -174,9 +189,10 @@ public class Storage {
     }
 
     /**
-     * Write text to file.
-     * @param linesToWrite string to be written to the file
-     * @throws IOException if file cannot be opened
+     * Writes text to file.
+     *
+     * @param linesToWrite string to be written to the file.
+     * @throws IOException if file cannot be opened.
      */
     public void writeToFile(String linesToWrite) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath));

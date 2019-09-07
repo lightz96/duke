@@ -5,21 +5,12 @@ import duke.storage.Storage;
 import duke.task.TaskList;
 
 public class ListCommand extends Command {
-    /**
-     * Notify the program to exit.
-     * @return false
-     */
+
     @Override
     public boolean isExit() {
         return false;
     }
 
-    /**
-     * Executes List command.
-     * @param taskList TaskList object for the duke program
-     * @param storage storage object for the duke program
-     * @return String to be printed
-     */
     @Override
     public String execute(TaskList taskList, Storage storage) {
         assert taskList != null : "tasklist cannot be null";

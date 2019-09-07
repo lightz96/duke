@@ -8,9 +8,10 @@ public class Deadline extends Task {
     protected LocalDateTime submissionTime;
 
     /**
-     * Constructor that will be used for entered command.
-     * @param name name of the deadline task
-     * @param submissionTime datetime of the deadline task
+     * Provides constructor that will be used for entered command.
+     *
+     * @param name name of the deadline task.
+     * @param submissionTime datetime of the deadline task.
      */
     public Deadline(String name, LocalDateTime submissionTime) {
         super(name);
@@ -18,10 +19,11 @@ public class Deadline extends Task {
     }
 
     /**
-     * Constructor that will be used for loading data from text.
-     * @param name name of the deadline task
-     * @param submissionTime datetime of the deadline task
-     * @param isDone is the status of the task
+     * Provides constructor that will be used for loading data from text.
+     *
+     * @param name name of the deadline task.
+     * @param submissionTime datetime of the deadline task.
+     * @param isDone is the status of the task.
      */
     public Deadline(String name, LocalDateTime submissionTime, boolean isDone) {
         super(name, isDone);
@@ -38,7 +40,8 @@ public class Deadline extends Task {
 
     /**
      * Formats the datetime.
-     * @return formatted datetime
+     *
+     * @return formatted datetime.
      */
     public String getFormattedDateTime() {
         return submissionTime.format(DateTimeFormatter.ofPattern("dd MMMM yyyy, hh:mm a"));

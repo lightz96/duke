@@ -1,5 +1,8 @@
 package duke.shared;
 
+/**
+ * Hardcoded messages to be display in the Duke GUI.
+ */
 public class Messages {
     public static final String COMMAND_INDENTATION = "    ";
     public static final String COMPLETION_INDENTATION = "  ";

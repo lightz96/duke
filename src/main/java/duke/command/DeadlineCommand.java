@@ -14,6 +14,8 @@ import java.time.format.DateTimeParseException;
 
 public class DeadlineCommand extends AddCommand {
 
+    private static final int DEADLINE_ARGUMENT_STARTING_INDEX = 1;
+    private static final String DEADLINE_DELIMITER = "/by";
     private static final String DATETIME_PATTERN = "dd/MM/yyyy HHmm";
     private String[] commands;
 
@@ -21,22 +23,12 @@ public class DeadlineCommand extends AddCommand {
         this.commands = commands;
     }
 
-    /**
-     * Notify the program to exit.
-     * @return false
-     */
+
     @Override
     public boolean isExit() {
         return false;
     }
 
-
-    /**
-     * Executes Deadline command.
-     * @param taskList TaskList object for the duke program
-     * @param storage storage object for the duke program
-     * @return String to be printed
-     */
     @Override
     public String execute(TaskList taskList, Storage storage) {
         assert taskList != null : "tasklist cannot be null";
@@ -44,7 +36,8 @@ public class DeadlineCommand extends AddCommand {
 
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATETIME_PATTERN);
-            String[] args = GetArgumentsUtil.getTwoCommandArgs(1, "/by", commands);
+            String[] args = GetArgumentsUtil.getTwoCommandArgs(DEADLINE_ARGUMENT_STARTING_INDEX,
+                    DEADLINE_DELIMITER, commands);
             LocalDateTime dateTime = LocalDateTime.parse(args[1], formatter);
             Task deadlineTask = new Deadline(args[0], dateTime);
             taskList.addToTaskList(deadlineTask);

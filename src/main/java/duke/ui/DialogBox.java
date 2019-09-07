@@ -15,7 +15,9 @@ import javafx.scene.text.TextAlignment;
 import java.io.IOException;
 import java.util.Collections;
 
-
+/**
+ * Displays the Dialog Box for the commands entered by user and duke replies.
+ */
 public class DialogBox extends HBox {
     @FXML
     private Text dialog;
@@ -28,9 +30,10 @@ public class DialogBox extends HBox {
     }
 
     /**
-     * Create DialogBox.
-     * @param text text entered in the textfield
-     * @param img image to be displayed in the dialogbox (either duke image or user image)
+     * Creates DialogBox.
+     *
+     * @param text text entered in the textfield.
+     * @param img image to be displayed in the dialogbox (either duke image or user image).
      */
     public DialogBox(String text, Image img) {
         try {
@@ -58,9 +61,10 @@ public class DialogBox extends HBox {
 
     /**
      * Creates and formats HBox for user.
-     * @param text text entered in the textfield
-     * @param img user image
-     * @return DialogBox that contains the text and img
+     *
+     * @param text text entered in the textfield.
+     * @param img user image.
+     * @return DialogBox that contains the text and img.
      */
     public static DialogBox getUserDialog(String text, Image img) {
         var db = new DialogBox(text, img);
@@ -70,9 +74,10 @@ public class DialogBox extends HBox {
 
     /**
      * Creates and formats HBox for duke.
-     * @param text text entered in the textfield
-     * @param img duke image
-     * @return DialogBox that contains the text and img
+     *
+     * @param text text entered in the textfield.
+     * @param img duke image.
+     * @return DialogBox that contains the text and img.
      */
     public static DialogBox getDukeDialog(String text, Image img) {
         var db = new DialogBox(text, img);
